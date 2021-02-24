@@ -70,7 +70,7 @@ class HomeController extends Controller
 
         //Indonesia
         $tracking = DB::table('trackings')
-                    ->select(DB::raw('provinsis.id'),
+                    ->select(DB::raw('provinsis.id as provinsiid'),
                     DB::raw('provinsis.nama_prov as nama_prov'),
                     DB::raw('SUM(trackings.positif) as positif'),
                     DB::raw('SUM(trackings.sembuh) as sembuh'),
