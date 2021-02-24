@@ -76,7 +76,7 @@ class HomeController extends Controller
                     ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                     ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
+                    ->rightjoin('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
                     ->select(
                         DB::raw('provinsis.id'),
                         DB::raw('provinsis.nama_prov as nama_prov'),
