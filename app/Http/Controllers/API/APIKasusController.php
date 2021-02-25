@@ -122,10 +122,11 @@ class APIKasusController extends Controller
         foreach ($f as $bb) {
             $d += $bb['aktif'];
         }
+        $positif = ['total' => $d];
         $arr = [
             'status' => 200,
             'data' => [ 
-                'total' => $d,
+                $positif
             ],
             'message' => 'Berhasil'
         ];
@@ -145,10 +146,11 @@ class APIKasusController extends Controller
         foreach ($f as $bb) {
             $d += $bb['kasus'];
         }
+        $kasus = ['total' => $d];
         $arr = [
             'status' => 200,
             'data' => [ 
-                'total' => $d,
+                $kasus
             ],
             'message' => 'Berhasil'
         ];
@@ -168,10 +170,12 @@ class APIKasusController extends Controller
         foreach ($f as $bb) {
             $d += $bb['meninggal'];
         }
+        
+        $meninggal = ['total' => $d];
         $arr = [
             'status' => 200,
             'data' => [ 
-                'total' => $d,
+                $meninggal
             ],
             'message' => 'Berhasil'
         ];
