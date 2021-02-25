@@ -38,5 +38,7 @@ Route::get('/dunia', 'API\APIKasusController@dunia');
 //Dunia
 Route::get('/kasusglobal', 'API\APIKasusController@kasusglobal');
 Route::get('/positifglobal', 'API\APIKasusController@positifglobal');
+Route::get('/sembuhglobal', 'API\APIKasusController@sembuhglobal');
+Route::get('/meninggalglobal', 'API\APIKasusController@meninggalglobal');
 
 
