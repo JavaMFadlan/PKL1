@@ -191,10 +191,11 @@ class APIKasusController extends Controller
         foreach ($f as $bb) {
             $d += $bb['sembuh'];
         }
+        $sembuh = ['total' => $d];
         $arr = [
             'status' => 200,
             'data' => [ 
-                'total' => $d
+                $sembuh
             ],
             'message' => 'Berhasil'
         ];
