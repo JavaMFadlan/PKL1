@@ -125,7 +125,7 @@ class APIKasusController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'total' => $d,
+            'total' => number_format($d),
             ],
             'message' => 'Berhasil'
         ];
@@ -141,10 +141,14 @@ class APIKasusController extends Controller
                     'kasus' =>$key['attributes']['Confirmed'],
                 ];
         }
+        $d = 0;
+        foreach ($f as $bb) {
+            $d += $bb['kasus'];
+        }
         $arr = [
             'status' => 200,
             'data' => [ 
-            $f->sum('kasus'),
+                'total' => number_format($d),
             ],
             'message' => 'Berhasil'
         ];
