@@ -120,7 +120,7 @@ class APIKasusController extends Controller
         }
         $d = 0;
         foreach ($f as $bb) {
-            $d += $bb;
+            $d += $bb['aktif'];
         }
         $arr = [
             'status' => 200,
