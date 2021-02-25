@@ -128,7 +128,7 @@ class APIKasusController extends Controller
         return response()->json($arr, 200);
         
     }
-    public function kasusdunia()
+    public function kasusglobal()
     {
         $f = [];
         $response = Http::get('https://api.kawalcorona.com/')->json();
