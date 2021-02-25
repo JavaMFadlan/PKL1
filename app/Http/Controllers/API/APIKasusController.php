@@ -125,7 +125,7 @@ class APIKasusController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'total' => $d,
+                'total' => $d,
             ],
             'message' => 'Berhasil'
         ];
@@ -144,6 +144,52 @@ class APIKasusController extends Controller
         $d = 0;
         foreach ($f as $bb) {
             $d += $bb['kasus'];
+        }
+        $arr = [
+            'status' => 200,
+            'data' => [ 
+                'total' => $d,
+            ],
+            'message' => 'Berhasil'
+        ];
+        return response()->json($arr, 200);
+        
+    }
+    public function meninggalglobal()
+    {
+        $f = [];
+        $response = Http::get('https://api.kawalcorona.com/')->json();
+        foreach ($response as $key) {
+            $f[] = [
+                    'meninggal' =>$key['attributes']['Deaths'],
+                ];
+        }
+        $d = 0;
+        foreach ($f as $bb) {
+            $d += $bb['meninggal'];
+        }
+        $arr = [
+            'status' => 200,
+            'data' => [ 
+                'total' => $d,
+            ],
+            'message' => 'Berhasil'
+        ];
+        return response()->json($arr, 200);
+        
+    }
+    public function sembuhglobal()
+    {
+        $f = [];
+        $response = Http::get('https://api.kawalcorona.com/')->json();
+        foreach ($response as $key) {
+            $f[] = [
+                    'sembuh' =>$key['attributes']['Recovered'],
+                ];
+        }
+        $d = 0;
+        foreach ($f as $bb) {
+            $d += $bb['sembuh'];
         }
         $arr = [
             'status' => 200,
