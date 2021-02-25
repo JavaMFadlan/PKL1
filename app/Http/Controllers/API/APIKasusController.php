@@ -109,4 +109,42 @@ class APIKasusController extends Controller
         return response()->json($arr, 200);
         
     }
+    public function positifdunia()
+    {
+        $f = [];
+        $response = Http::get('https://api.kawalcorona.com/')->json();
+        foreach ($response as $key) {
+            $f[] = [
+                    'aktif' =>$key['attributes']['Active'],
+                ];
+        }
+        $arr = [
+            'status' => 200,
+            'data' => [ 
+            $f,
+            ],
+            'message' => 'Berhasil'
+        ];
+        return response()->json($arr, 200);
+        
+    }
+    public function kasusdunia()
+    {
+        $f = [];
+        $response = Http::get('https://api.kawalcorona.com/')->json();
+        foreach ($response as $key) {
+            $f[] = [
+                    'kasus' =>$key['attributes']['Confirmed'],
+                ];
+        }
+        $arr = [
+            'status' => 200,
+            'data' => [ 
+            $f,
+            ],
+            'message' => 'Berhasil'
+        ];
+        return response()->json($arr, 200);
+        
+    }
 }
