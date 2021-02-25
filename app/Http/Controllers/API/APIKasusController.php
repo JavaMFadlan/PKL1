@@ -109,7 +109,7 @@ class APIKasusController extends Controller
         return response()->json($arr, 200);
         
     }
-    public function positifdunia()
+    public function positifglobal()
     {
         $f = [];
         $response = Http::get('https://api.kawalcorona.com/')->json();
@@ -118,10 +118,14 @@ class APIKasusController extends Controller
                     'aktif' =>$key['attributes']['Active'],
                 ];
         }
+        $d = 0;
+        foreach ($f as $bb) {
+            $d += $bb;
+        }
         $arr = [
             'status' => 200,
             'data' => [ 
-            $f->sum('aktif'),
+            $f,
             ],
             'message' => 'Berhasil'
         ];
