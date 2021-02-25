@@ -194,7 +194,7 @@ class APIKasusController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-                'total' => $d,
+                'total' => $d
             ],
             'message' => 'Berhasil'
         ];
