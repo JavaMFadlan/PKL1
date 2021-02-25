@@ -101,9 +101,8 @@ class APIKasusController extends Controller
         }
         $arr = [
             'status' => 200,
-            'data' => [ 
+            'data' => 
             $f,
-            ],
             'message' => 'Berhasil'
         ];
         return response()->json($arr, 200);
