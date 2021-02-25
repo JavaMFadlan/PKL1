@@ -198,7 +198,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-10 mx-auto">
-                            <h3 class="title-5 m-b-35 ">Data Provinsi</h3>
+                            <h3 class="title-5 m-b-35 ">Data provinsi</h3>
                             </div>
                             <div class="card mx-auto col-10">
                                 <div class="card-body">
