@@ -29,6 +29,6 @@ class CreateRwTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rw');
+        Schema::dropIfExists('rws');
     }
 }
