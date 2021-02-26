@@ -13,13 +13,13 @@ class Kecamatan extends CsvSeeder
     public function __construct()
     {
         $this->table = 'kecamatans';
+        $this->csv_delimiter= ';';
         $this->filename = base_path().'/database/seeds/csv/districts.csv';
     }
 
     public function run()
     {
         DB::disableQueryLog();
-        DB::table($this->table)->truncate();
         parent::run();
     }
 }

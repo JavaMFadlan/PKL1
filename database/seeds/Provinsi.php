@@ -13,13 +13,13 @@ class Provinsi extends CsvSeeder
     public function __construct()
     {
         $this->table = 'provinsis';
+        $this->csv_delimiter= ';';
         $this->filename = base_path().'/database/seeds/csv/provinces.csv';
     }
 
     public function run()
     {
         DB::disableQueryLog();
-        DB::table($this->table)->truncate();
         parent::run();
     }
 }
