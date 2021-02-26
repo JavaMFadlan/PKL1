@@ -92,7 +92,7 @@ class HomeController extends Controller
                         DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
                         ->join('kotas' ,'kotas.id_prov', '=', 'provinsis.id')
                         ->join('kecamatans' ,'kecamatans.id_kota', '=', 'kotas.id')
-                        ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamtans.id')
+                        ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                         ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
                     ->groupby('id','nama_prov')
