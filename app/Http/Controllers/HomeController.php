@@ -48,7 +48,7 @@ class HomeController extends Controller
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
                         DB::raw('SUM(trackings.meninggal) as meninggal'),
                         DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
-                    ->groupby('provinsis.id')
+                    ->groupby('provinsis.id', 'trackings.positif', 'trackings.sembuh', 'trackings.meninggal')
                     ->get();
         
         return view('admin.index', compact('data','tracking'));
