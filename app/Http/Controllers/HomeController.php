@@ -82,22 +82,37 @@ class HomeController extends Controller
 
 
         //Indonesia
-        $tracking = DB::table('trackings')
+        $tracking = DB::table('provinsis')
                     ->select(
-                        'provinsis.id',
-                        DB::raw('provinsis.nama_prov as nama_prov'),
+                        'id',
+                        'nama_prov',
                         DB::raw('SUM(trackings.positif) as positif'),
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
                         DB::raw('SUM(trackings.meninggal) as meninggal'),
                         DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
-                    ->join('rws' ,'trackings.id_rw', '=', 'rws.id')
-                    ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
-                    ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
-                    ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
-                    ->groupby('provinsis.id')
+                        ->join('kotas' ,'kotas.id_prov', '=', 'provinsis.id')
+                        ->join('kecamatans' ,'kecamatans.id_kota', '=', 'kotas.id')
+                        ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamtans.id')
+                        ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
+                    ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
+                    ->groupby('id','nama_prov')
                     ->get();
 
+                    // DB::table('provinsis')
+                    // ->select(
+                    //     'id',
+                    //     'nama_prov',
+                    //     DB::raw('SUM(trackings.positif) as positif'),
+                    //     DB::raw('SUM(trackings.sembuh) as sembuh'),
+                    //     DB::raw('SUM(trackings.meninggal) as meninggal'),
+                    //     DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
+                    //     ->join('kotas' ,'kotas.id_prov', '=', 'provinsis.id')
+                    //     ->join('kecamatans' ,'kecamatans.id_kota', '=', 'kotas.id')
+                    //     ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamtans.id')
+                    //     ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
+                    // ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
+                    // ->groupby('id','nama_prov')
+                    // ->get();
         
         return view('index', compact('data', 'tracking'));
     }
