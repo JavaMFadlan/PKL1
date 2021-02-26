@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05003c5f3b077a8f3d2321041f755a06",
+    "content-hash": "2814dce816ae419a7fa373dd2f75d8e9",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
@@ -584,21 +584,21 @@
         },
         {
             "name": "flynsarmy/csv-seeder",
-            "version": "v2.0.1",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flynsarmy/laravel-csv-seeder.git",
-                "reference": "432c6b83b155cbec685aaf70e92aec141113fcb5"
+                "reference": "847905569e9921e5d184a630e2d348f929b69401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flynsarmy/laravel-csv-seeder/zipball/432c6b83b155cbec685aaf70e92aec141113fcb5",
-                "reference": "432c6b83b155cbec685aaf70e92aec141113fcb5",
+                "url": "https://api.github.com/repos/Flynsarmy/laravel-csv-seeder/zipball/847905569e9921e5d184a630e2d348f929b69401",
+                "reference": "847905569e9921e5d184a630e2d348f929b69401",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": ">=4.1.0",
-                "php": ">=7"
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.0@dev"
@@ -629,9 +629,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Flynsarmy/laravel-csv-seeder/issues",
-                "source": "https://github.com/Flynsarmy/laravel-csv-seeder/tree/v2.0.1"
+                "source": "https://github.com/Flynsarmy/laravel-csv-seeder/tree/master"
             },
-            "time": "2020-03-27T03:59:27+00:00"
+            "time": "2020-03-26T14:29:37+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -1481,16 +1481,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.18",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c0c78f430e4151fb6902bbb88c75e782d2549e1a"
+                "reference": "8055af7730938cd607616fde122825ed960a9b71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c0c78f430e4151fb6902bbb88c75e782d2549e1a",
-                "reference": "c0c78f430e4151fb6902bbb88c75e782d2549e1a",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/8055af7730938cd607616fde122825ed960a9b71",
+                "reference": "8055af7730938cd607616fde122825ed960a9b71",
                 "shasum": ""
             },
             "require": {
@@ -1541,7 +1541,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.3.18"
+                "source": "https://github.com/livewire/livewire/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -1549,7 +1549,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-16T20:34:52+00:00"
+            "time": "2021-02-23T17:44:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5422,16 +5422,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d"
+                "reference": "31467aeb3ca3188158613322d66df81cedd86626"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/31467aeb3ca3188158613322d66df81cedd86626",
+                "reference": "31467aeb3ca3188158613322d66df81cedd86626",
                 "shasum": ""
             },
             "require": {
@@ -5485,9 +5485,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.3.3"
+                "source": "https://github.com/mockery/mockery/tree/1.3.4"
             },
-            "time": "2020-08-11T18:10:21+00:00"
+            "time": "2021-02-24T09:51:00+00:00"
         },
         {
             "name": "myclabs/deep-copy",
