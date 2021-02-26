@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
-class Provinsi extends Seeder
+class Provinsi extends CsvSeeder
 {
     /**
      * Run the database seeds.
