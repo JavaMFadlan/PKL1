@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
 class Kecamatan extends Seeder
