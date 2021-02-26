@@ -120,8 +120,8 @@ class APIController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'Hari Ini' =>[$join2],
-            'Total' =>[$join1]
+            'Hari Ini' =>$join2,
+            'Total' =>$join1
             ],
             'message' => 'Berhasil'
         ];
@@ -191,8 +191,8 @@ class APIController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'Hari Ini' =>[$join2],
-            'Total' =>[$join1]
+            'Hari Ini' =>$join2,
+            'Total' =>$join1
             ],
             'message' => 'Berhasil'
         ];
@@ -258,8 +258,8 @@ class APIController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'Hari Ini' =>[$join2],
-            'Total' =>[$join1]
+            'Hari Ini' =>$join2,
+            'Total' =>$join1
             ],
             'message' => 'Berhasil'
         ];
@@ -321,8 +321,8 @@ class APIController extends Controller
         $arr = [
             'status' => 200,
             'data' => [ 
-            'Hari Ini' =>[$join2],
-            'Total' =>[$join1]
+            'Hari Ini' =>$join2,
+            'Total' =>$join1
             ],
             'message' => 'Berhasil'
         ];
