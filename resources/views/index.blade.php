@@ -15,7 +15,9 @@
                 $k += $key['sembuh'];
             }
             foreach ($tracking as $ke) {
-                $m += $ke->total;
+                $m += $ke->positif;
+                $m += $ke->sembuh;
+                $m += $ke->meninggal;
             }
         ?>
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" 
