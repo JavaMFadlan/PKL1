@@ -84,7 +84,7 @@ class HomeController extends Controller
         //Indonesia
         $tracking = DB::table('provinsis')
                     ->select(
-                        'id',
+                        'kode_prov',
                         'nama_prov',
                         DB::raw('SUM(trackings.positif) as positif'),
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
@@ -95,7 +95,7 @@ class HomeController extends Controller
                         ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                         ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
-                    ->groupby('id','nama_prov')
+                    ->groupby('kode_prov','nama_prov')
                     ->get();
 
                     // DB::table('provinsis')
