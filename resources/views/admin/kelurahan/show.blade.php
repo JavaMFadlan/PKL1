@@ -11,22 +11,22 @@
                         <div class="row">
                             <div class="col-md-5 mr-auto">
                                 <div class="form-group">
-                                    <label for="">kode kecamatan</label>
-                                    <input type="number" name="kode" class="form-control" value="{{$kecamatan->kode_kec}}" disabled>
+                                    <label for="">kode kelurahan</label>
+                                    <input type="number" name="kode" class="form-control" value="{{$kelurahan->kode_kel}}" disabled>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="">nama kecamatan</label>
-                                    <input type="text" name="nama" class="form-control" value="{{$kecamatan->nama_kec}}" disabled>
+                                    <label for="">nama kelurahan</label>
+                                    <input type="text" name="nama" class="form-control" value="{{$kelurahan->nama_kel}}" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-5 mx-auto">
                                 <div class="form-group">
-                                <label for="">nama kota</label>
-                                        <input type="text" name="nama" class="form-control" value="{{$kota->nama_kota}}" disabled>
+                                <label for="">nama kecamatan</label>
+                                        <input type="text" name="nama" class="form-control" value="{{$kota->nama_kec}}" disabled>
                                 </div>
                             </div>
                         </div>

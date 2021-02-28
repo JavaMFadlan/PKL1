@@ -30,7 +30,7 @@
                                             <div class="row">
                                                 <div class="col-md-5 mx-auto">
                                                     <div class="form-group">
-                                                        <label>nama kota</label>
+                                                        <label>nama kelurahan</label>
                                                         <select class="form-control" name="id_kel" id="">
                                                             @foreach ($kelurahan as $data)
                                                                 <option value="{{$data->id}}">{{$data->nama_kel}}</option>

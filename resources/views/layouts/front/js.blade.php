@@ -10,14 +10,14 @@
                         $k += $key['sembuh'];
                         $f += $key['kasus'];
                     }
+                $n = 0;
+                $m = 0;
+                $b = 0;
                 if($g != 0){
                     $n = ($g / $f) * 100;
                     $m = ($h / $f) * 100;
                     $b = ($k / $f) * 100;
                 }
-                $n = 0;
-                $m = 0;
-                $b = 0;
                 ?>
                 var kasus = {{$f}};
                 var aktif = {{$n}};
