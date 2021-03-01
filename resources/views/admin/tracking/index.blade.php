@@ -59,6 +59,7 @@
                                                 <td>{{$data->positif}}</td>
                                                 <td>{{$data->sembuh}}</td>
                                                 <td>{{$data->meninggal}}</td>
+                                                <td>{{$data->dirawat}}</td>
                                                 <td> 
                                                     <form action="{{ route('tracking.destroy',$data->id)}}" method="post">
                                                         @method('delete')

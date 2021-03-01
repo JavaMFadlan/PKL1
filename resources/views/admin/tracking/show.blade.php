@@ -31,6 +31,12 @@
                                     <input type="number" name="meninggal" class="form-control" disabled value="{{$tracking->meninggal}}">
                                 </div>
                             </div>
+                            <div class=" mr-auto">
+                                <div class="form-group">
+                                    <label for="">dirawat</label>
+                                    <input type="number" name="dirawat" class="form-control" disabled value="{{$tracking->dirawat}}">
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>

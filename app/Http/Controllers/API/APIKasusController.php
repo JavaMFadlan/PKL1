@@ -22,22 +22,30 @@ class APIKasusController extends Controller
         $positif = tracking::get('positif')->sum('positif');
         $sembuh = tracking::get('sembuh')->sum('sembuh');
         $meninggal = tracking::get()->sum('meninggal');
+        $dirawat = tracking::get()->sum('dirawat');
         $positifh = tracking::where('tanggal', date('Y-m-d'))->get('positif')->sum('positif');
         $sembuhh = tracking::where('tanggal', date('Y-m-d'))->get('sembuh')->sum('sembuh');
         $meninggalh = tracking::where('tanggal', date('Y-m-d'))->get('meninggal')->sum('meninggal');
+        $dirawath = tracking::where('tanggal', date('Y-m-d'))->get('dirawat')->sum('dirawat');
         $arr = [
             'status' => 200,
-            'nama_negara' => 'indonesia',
+            
             'data' => [ 
             'Hari Ini' =>[
-                    'positif' => $positifh,
-                    'sembuh' => $sembuhh,
-                    'meninggal' => $meninggalh,
+                    [
+                    'nama_negara' => 'Indonesia',
+                    'positif' => "$positifh",
+                    'sembuh' => "$sembuhh",
+                    'meninggal' => "$meninggalh",
+                    'dirawat' => "$dirawath"]
             ],
             'Total' =>[
-                    'positif' => $positif,
-                    'sembuh' => $sembuh,
-                    'meninggal' => $meninggal,
+                [
+                    'nama_negara' => 'Indonesia',
+                    'positif' => "$positif",
+                    'sembuh' => "$sembuh",
+                    'meninggal' => "$meninggal",
+                    'dirawat' => "$dirawat"]
                 ]
             ],
             'message' => 'Berhasil'

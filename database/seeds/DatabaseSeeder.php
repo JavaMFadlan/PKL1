@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Provinsi::class);
         $this->call(Kota::class);
         $this->call(Kecamatan::class);
+        $this->call(User::class);
     }
 }

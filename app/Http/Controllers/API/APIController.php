@@ -23,7 +23,12 @@ class APIController extends Controller
     public function provinsi()
     {
         $join1 = DB::table('trackings')
-                    ->select(DB::raw('provinsis.id'),DB::raw('provinsis.nama_prov'),DB::raw('SUM(trackings.positif) as positif'),DB::raw('SUM(trackings.sembuh) as sembuh'),DB::raw('SUM(trackings.meninggal) as meninggal'))
+                    ->select(DB::raw('provinsis.id'),
+                            DB::raw('provinsis.nama_prov'),
+                            DB::raw('SUM(trackings.positif) as positif'),
+                            DB::raw('SUM(trackings.sembuh) as sembuh'),
+                            DB::raw('SUM(trackings.meninggal) as meninggal'),
+                            DB::raw('SUM(trackings.dirawat) as dirawat'))
                     ->join('rws' ,'trackings.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
@@ -33,7 +38,7 @@ class APIController extends Controller
                     ->get();
 
         $join2 = DB::table('trackings')
-                    ->select(DB::raw('provinsis.id'),DB::raw('provinsis.nama_prov'),DB::raw('SUM(trackings.positif) as positif'),DB::raw('SUM(trackings.sembuh) as sembuh'),DB::raw('SUM(trackings.meninggal) as meninggal'))
+                    ->select(DB::raw('provinsis.id'),DB::raw('provinsis.nama_prov'),DB::raw('SUM(trackings.positif) as positif'),DB::raw('SUM(trackings.sembuh) as sembuh'),DB::raw('SUM(trackings.meninggal) as meninggal'), DB::raw('SUM(trackings.dirawat) as dirawat'))
                     ->join('rws' ,'trackings.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')

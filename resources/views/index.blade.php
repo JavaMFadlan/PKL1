@@ -18,6 +18,7 @@
                 $m += $ke->positif;
                 $m += $ke->sembuh;
                 $m += $ke->meninggal;
+                $m += $ke->dirawat;
             }
         ?>
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" 
@@ -212,6 +213,7 @@
                                                     <th>Positif</th>
                                                     <th>Sembuh</th>
                                                     <th>Meninggal</th>
+                                                    <th>Dirawat</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -221,6 +223,7 @@
                                                     <td style="color:#ffbf00;">{{number_format($ls->positif)}}</td>
                                                     <td style="color:lime;">{{number_format($ls->sembuh)}}</td>
                                                     <td style="color:tomato;">{{number_format($ls->meninggal)}}</td>
+                                                    <td>{{number_format($ls->dirawat)}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

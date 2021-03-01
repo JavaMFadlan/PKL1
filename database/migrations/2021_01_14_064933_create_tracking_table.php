@@ -19,6 +19,7 @@ class CreateTrackingTable extends Migration
             $table->integer('sembuh');
             $table->integer('positif');
             $table->integer('meninggal');
+            $table->integer('dirawat');
             $table->date('tanggal');
             $table->timestamps();
         });

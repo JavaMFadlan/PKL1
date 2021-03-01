@@ -38,6 +38,12 @@
                                                             <input type="number" max="9999" name="meninggal" class="form-control" required id="">
                                                         </div>
                                                     </div>
+                                                    <div class=" mr-auto">
+                                                        <div class="form-group">
+                                                            <label for="">dirawat</label>
+                                                            <input type="number" max="9999" name="dirawat" class="form-control" required id="">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">

@@ -47,7 +47,8 @@ class HomeController extends Controller
                         DB::raw('SUM(trackings.positif) as positif'),
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
                         DB::raw('SUM(trackings.meninggal) as meninggal'),
-                        DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
+                        DB::raw('SUM(trackings.dirawat) as dirawat'),
+                        DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal + trackings.dirawat as total'))
                     ->groupby('provinsis.id', 'trackings.positif', 'trackings.sembuh', 'trackings.meninggal')
                     ->get();
         
@@ -88,32 +89,17 @@ class HomeController extends Controller
                         'nama_prov',
                         DB::raw('SUM(trackings.positif) as positif'),
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
-                        DB::raw('SUM(trackings.meninggal) as meninggal')
+                        DB::raw('SUM(trackings.meninggal) as meninggal'),
+                        DB::raw('SUM(trackings.dirawat) as dirawat')
                         )
                         ->join('kotas' ,'kotas.id_prov', '=', 'provinsis.id')
                         ->join('kecamatans' ,'kecamatans.id_kota', '=', 'kotas.id')
                         ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                         ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
                         ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
-                    ->groupby('kode_prov','nama_prov')
-                    ->get();
+                        ->groupby('kode_prov','nama_prov')
+                        ->get();
 
-                    // DB::table('provinsis')
-                    // ->select(
-                    //     'id',
-                    //     'nama_prov',
-                    //     DB::raw('SUM(trackings.positif) as positif'),
-                    //     DB::raw('SUM(trackings.sembuh) as sembuh'),
-                    //     DB::raw('SUM(trackings.meninggal) as meninggal'),
-                    //     DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal as total'))
-                    //     ->join('kotas' ,'kotas.id_prov', '=', 'provinsis.id')
-                    //     ->join('kecamatans' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    //     ->join('kelurahans' ,'kelurahans.id_kec', '=', 'kecamtans.id')
-                    //     ->join('rws' ,'rws.id_kel', '=', 'kelurahans.id')
-                    // ->join('trackings' ,'trackings.id_rw', '=', 'rws.id')
-                    // ->groupby('id','nama_prov')
-                    // ->get();
-        
         return view('index', compact('data', 'tracking'));
     }
     

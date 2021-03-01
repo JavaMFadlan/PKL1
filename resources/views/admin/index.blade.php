@@ -66,6 +66,7 @@
                                                 <th>Positif</th>
                                                 <th>Sembuh</th>
                                                 <th>Meninggal</th>
+                                                <th>Sembuh</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,6 +78,7 @@
                                                     <td style="color:#ffbf00;">{{number_format($ls->positif)}}</td>
                                                     <td style="color:lime;">{{number_format($ls->sembuh)}}</td>
                                                     <td style="color:tomato;">{{number_format($ls->meninggal)}}</td>
+                                                    <td style="color:tomato;">{{number_format($ls->dirawat)}}</td>
                                                 </tr>
                                                 @endforeach
                                         </tbody>

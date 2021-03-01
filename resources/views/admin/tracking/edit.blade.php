@@ -35,6 +35,12 @@
                                                 <input type="number" max="9999" name="meninggal" class="form-control" required value="{{$tracking->meninggal}}">
                                             </div>
                                         </div>
+                                        <div class=" mr-auto">
+                                            <div class="form-group">
+                                                <label for="">dirawat</label>
+                                                <input type="number" max="9999" name="dirawat" class="form-control" required value="{{$tracking->dirawat}}">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             <input type="submit" class="btn btn-lg btn-warning m-3 float-left" value="Edit">

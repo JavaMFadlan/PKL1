@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tracking extends Model
 {
-    protected $fillable = ['sembuh','positif','meninggal'];
+    protected $fillable = ['sembuh','positif','meninggal','dirawat'];
     public $timestamps = true;
     public function rw()
     {

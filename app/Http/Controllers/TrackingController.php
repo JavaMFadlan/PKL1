@@ -43,7 +43,8 @@ class TrackingController extends Controller
                     'id_rw' => 'required',
                     'sembuh' => "required",
                     'positif' => "required",
-                    'meninggal' => "required"
+                    'meninggal' => "required",
+                    'dirawat' => "required",
         ], $messages
         );
         $tracking = new tracking();
@@ -51,6 +52,7 @@ class TrackingController extends Controller
         $tracking->sembuh = $request->sembuh;
         $tracking->positif = $request->positif;
         $tracking->meninggal = $request->meninggal;
+        $tracking->dirawat = $request->dirawat;
         $tracking->tanggal = date('Y-m-d');
         $tracking->save();
         return redirect()->route('tracking.index')->with(['message' => 'Berhasil']);
@@ -97,7 +99,8 @@ class TrackingController extends Controller
                     'id_rw' => 'required',
                     'sembuh' => "required",
                     'positif' => "required",
-                    'meninggal' => "required"
+                    'meninggal' => "required",
+                    'dirawat' => "required",
         ], $messages
         );
         $tracking = tracking::findorFail($id);
@@ -105,6 +108,7 @@ class TrackingController extends Controller
         $tracking->sembuh = $request->sembuh;
         $tracking->positif = $request->positif;
         $tracking->meninggal = $request->meninggal;
+        $tracking->dirawat = $request->dirawat;
         $tracking->update();
         return redirect()->route('tracking.index')->with(['message' => 'Berhasil']);
     }
