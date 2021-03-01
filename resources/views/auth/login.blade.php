@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page</title>
+	<title>Login</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/my-login.css')}}">
 </head>
@@ -34,9 +34,6 @@
 
 								<div class="form-group">
 									<label for="password">{{ __('Password') }}
-										<a href="forgot.html" class="float-right">
-											Forgot Password?
-										</a>
 									</label>
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required data-eye>
 								    @error('password')
@@ -50,14 +47,6 @@
 									<button type="submit" class="btn btn-primary btn-block">
 									{{ __('Login') }}
 									</button>
-								</div>
-								@if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-								<div class="mt-4 text-center">
-									Don't have an account? <a href="{{route('register')}}">Create One</a>
 								</div>
 							</form>
 						</div>
