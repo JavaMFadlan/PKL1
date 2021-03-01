@@ -24,14 +24,25 @@ class HomeController extends Controller
     {
         $data = [];
         $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
+        if($response == NULL){
             $data[] = [
-                    'nama_negara' => $key['attributes']['Country_Region'], 
-                    'kasus' =>$key['attributes']['Confirmed'],
-                    'aktif' =>$key['attributes']['Active'],
-                    'sembuh' =>$key['attributes']['Recovered'],
-                    'meninggal' =>$key['attributes']['Deaths']
-                ];
+                'nama_negara' => 0, 
+                'kasus' =>0,
+                'aktif' =>0,
+                'sembuh' =>0,
+                'meninggal' =>0
+            ];
+        }
+        else{
+        foreach ($response as $key) {
+                $data[] = [
+                        'nama_negara' => $key['attributes']['Country_Region'], 
+                        'kasus' =>$key['attributes']['Confirmed'],
+                        'aktif' =>$key['attributes']['Active'],
+                        'sembuh' =>$key['attributes']['Recovered'],
+                        'meninggal' =>$key['attributes']['Deaths']
+                    ];
+            }
         }
 
         $tracking = DB::table('trackings')
@@ -47,9 +58,9 @@ class HomeController extends Controller
                         DB::raw('SUM(trackings.positif) as positif'),
                         DB::raw('SUM(trackings.sembuh) as sembuh'),
                         DB::raw('SUM(trackings.meninggal) as meninggal'),
-                        DB::raw('SUM(trackings.dirawat) as dirawat'),
-                        DB::raw('trackings.positif + trackings.sembuh + trackings.meninggal + trackings.dirawat as total'))
-                    ->groupby('provinsis.id', 'trackings.positif', 'trackings.sembuh', 'trackings.meninggal')
+                        DB::raw('SUM(trackings.dirawat) as dirawat')
+                        )
+                    ->groupby('provinsis.id', 'provinsis.nama_prov')
                     ->get();
         
         return view('admin.index', compact('data','tracking'));
