@@ -50,7 +50,7 @@ class APIController extends Controller
         $arr = [
             'status' => 200,
             'data' => [
-            [$join1]
+            $join1
             ],
             'message' => 'Berhasil'
         ];
