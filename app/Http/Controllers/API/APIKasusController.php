@@ -32,18 +32,10 @@ class APIKasusController extends Controller
             
             'data' => [ 
             [
-            'Hari Ini' =>[
-                    [
-                    'nama_negara' => 'Indonesia',
-                    'positif' => "$positifh",
-                    'sembuh' => "$sembuhh",
-                    'meninggal' => "$meninggalh",
-                    'dirawat' => "$dirawath"]
-            ],
             'Total' =>
                 [
                     [
-                    'nama_negara' => 'Indonesia',
+                    'name' => 'Indonesia',
                     'positif' => "$positif",
                     'sembuh' => "$sembuh",
                     'meninggal' => "$meninggal",
