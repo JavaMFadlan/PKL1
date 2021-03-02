@@ -49,9 +49,9 @@ class APIController extends Controller
                     ->get();
         $arr = [
             'status' => 200,
-            'data' => [
+            'data' => 
             $join1
-            ],
+            ,
             'message' => 'Berhasil'
         ];
         return response()->json($arr, 200);
