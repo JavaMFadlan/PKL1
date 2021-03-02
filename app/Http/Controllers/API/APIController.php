@@ -49,9 +49,8 @@ class APIController extends Controller
                     ->get();
         $arr = [
             'status' => 200,
-            'data' => [ 
-            'Hari Ini' =>$join2,
-            'Total' =>$join1
+            'data' => [
+            [$join1]
             ],
             'message' => 'Berhasil'
         ];
