@@ -32,17 +32,14 @@ class APIKasusController extends Controller
             
             'data' => [ 
             [
-            'Total' =>
-                [
-                    [
                     'name' => 'Indonesia',
                     'positif' => "$positif",
                     'sembuh' => "$sembuh",
                     'meninggal' => "$meninggal",
-                    'dirawat' => "$dirawat"]
+                    'dirawat' => "$dirawat"
                     ]
-                ]
             ],
+                
             'message' => 'Berhasil'
         ];
         return response()->json($arr, 200);
