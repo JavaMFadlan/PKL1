@@ -31,6 +31,7 @@ class APIKasusController extends Controller
             'status' => 200,
             
             'data' => [ 
+            [
             'Hari Ini' =>[
                     [
                     'nama_negara' => 'Indonesia',
@@ -39,13 +40,15 @@ class APIKasusController extends Controller
                     'meninggal' => "$meninggalh",
                     'dirawat' => "$dirawath"]
             ],
-            'Total' =>[
+            'Total' =>
                 [
+                    [
                     'nama_negara' => 'Indonesia',
                     'positif' => "$positif",
                     'sembuh' => "$sembuh",
                     'meninggal' => "$meninggal",
                     'dirawat' => "$dirawat"]
+                    ]
                 ]
             ],
             'message' => 'Berhasil'
