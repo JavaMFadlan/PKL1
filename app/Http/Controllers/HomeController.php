@@ -70,7 +70,7 @@ class HomeController extends Controller
         //Global
         $data = [];
         $response = Http::get('https://api.kawalcorona.com/')->json();
-        if($response == NULL || curl_errno($response)){
+        if($response == NULL){
             $data[] = [
                 'nama_negara' => 0, 
                 'kasus' =>0,
