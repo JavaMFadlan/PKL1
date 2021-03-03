@@ -39,6 +39,7 @@
                                                 <th>Positif <i class="fas fa-frown"></i></th>
                                                 <th>Sembuh <i class="fas fa-smile-beam"></i></th>
                                                 <th>Meninggal <i class="fas fa-dizzy"></i></th>
+                                                <th>dirawat <i class="fas fa-hospital"></i></th>
                                                 <th>aksi</th>
                                             </tr>
                                         </thead>

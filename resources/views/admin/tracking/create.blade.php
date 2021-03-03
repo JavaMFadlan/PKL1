@@ -8,7 +8,7 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-header text-center">
-                                        <h3>Menambah Data rw</h3>
+                                        <h3>Menambah Data Tracking</h3>
                                     </div>
                                     <div class="card-body">
                                         <form action="{{route('tracking.store')}}" method="post">

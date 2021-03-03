@@ -96,14 +96,12 @@ class KelurahanController extends Controller
     {
         $messages = [
             'required' => ':attribute wajib diisi',
-            'min' => ':attribute harus diisi minimal :min karakter ',
             'numeric' => 'kode kelurahan Harus Angka',
-            'unique' => 'kode kelurahan telah terpakai',
         ];  
         $this->validate($request, [
                     'id_kec' => 'required',
-                    'nama' => 'required|min:5',
-                    'kode' => "required|numeric|unique:kelurahans,kode_kel",
+                    'nama' => 'required',
+                    'kode' => "required",
         ], $messages
         );
         $kelurahan = kelurahan::findorfail($id);

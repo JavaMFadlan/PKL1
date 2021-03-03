@@ -95,14 +95,11 @@ class RwController extends Controller
     {
         $messages = [
             'required' => ':attribute wajib diisi',
-            'min' => ':attribute harus diisi minimal :min karakter ',
-            'numeric' => 'kode Rw Harus Angka',
-            'unique' => 'kode Rw telah terpakai',
         ];  
         $this->validate($request, [
                     'id_kel' => 'required',
-                    'nama' => 'required|min:5',
-                    'kode' => "required|numeric|unique:rws,kode_rw,$id",
+                    'nama' => 'required',
+                    'kode' => "required",
         ], $messages
         );
         $rw = rw::findorfail($id);
