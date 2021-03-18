@@ -25,9 +25,12 @@
                             @endif
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a href="{{ route('tracking.create')}}" class="float-right btn btn-primary">
+                            <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                 <i class="fas fa-plus"></i>
-                                </a>
+                                    Menambah Data
+                            </button>
+                                <!-- <a href="{{ route('tracking.create')}}" class="float-right btn btn-primary"></a> -->
+                                
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -65,9 +68,9 @@
                                                     <form action="{{ route('tracking.destroy',$data->id)}}" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <a href="{{route('tracking.show',$data->id)}}" role="button" class="btn btn-success"> <i class="fas fa-eye"></i> </a>
-                                                        <a href="{{route('tracking.edit',$data->id)}}" role="button" class="btn btn-warning"> <i class="fas fa-edit"></i></a>
-                                                        <button class="btn btn-danger" type="submit" value="Hapus"><i class="fas fa-trash"></i>
+                                                        <a href="{{route('tracking.show',$data->id)}}" role="button" class="btn btn-success"> <i class="fas fa-eye"></i> Detail </a>
+                                                        <a href="{{route('tracking.edit',$data->id)}}" role="button" class="btn btn-warning"> <i class="fas fa-edit"></i> Edit</a>
+                                                        <button class="btn btn-danger" type="submit" value="Hapus"><i class="fas fa-trash"></i> Hapus
                                                     </form>
                                                 </td>
                                             </tr>
@@ -82,15 +85,36 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-muted">Copyright &copy; Covid46 2021</div>
                         </div>
                     </div>
                 </footer>
+            </div>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Jumlah Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('tracking.create')}}" method="GET">
+                        @csrf
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="num" id="" min=1 placeholder="Jumlah Yang Diinginkan" required>
+                            </div>
+                            <button type="submit" class="float-right btn btn-primary">
+                            <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 @endsection

@@ -20,25 +20,25 @@
                                         <div class=" mr-auto">
                                             <div class="form-group">
                                                 <label for="">positif</label>
-                                                <input type="number" max="9999" name="positif" class="form-control" required value="{{$tracking->positif}}">
+                                                <input type="number" min=0 name="positif" class="form-control" required value="{{$tracking->positif}}">
                                             </div>
                                         </div>
                                         <div class=" mr-auto">
                                             <div class="form-group">
                                                 <label for="">sembuh</label>
-                                                <input type="number" max="9999" name="sembuh" class="form-control" required value="{{$tracking->sembuh}}">
+                                                <input type="number" min=0 name="sembuh" class="form-control" required value="{{$tracking->sembuh}}">
                                             </div>
                                         </div>
                                         <div class=" mr-auto">
                                             <div class="form-group">
                                                 <label for="">meninggal</label>
-                                                <input type="number" max="9999" name="meninggal" class="form-control" required value="{{$tracking->meninggal}}">
+                                                <input type="number" min=0 name="meninggal" class="form-control" required value="{{$tracking->meninggal}}">
                                             </div>
                                         </div>
                                         <div class=" mr-auto">
                                             <div class="form-group">
                                                 <label for="">dirawat</label>
-                                                <input type="number" max="9999" name="dirawat" class="form-control" required value="{{$tracking->dirawat}}">
+                                                <input type="number" min=0 name="dirawat" class="form-control" required value="{{$tracking->dirawat}}">
                                             </div>
                                         </div>
                                     </div>

@@ -23,9 +23,10 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.tracking.create');
+        $num = $request->num;
+        return view('admin.tracking.create',compact('num'));
     }
 
     /**
@@ -40,21 +41,27 @@ class TrackingController extends Controller
             'required' => ':attribute wajib diisi',
         ];  
         $this->validate($request, [
-                    'id_rw' => 'required',
-                    'sembuh' => "required",
-                    'positif' => "required",
-                    'meninggal' => "required",
-                    'dirawat' => "required",
+                    'id_rw.*' => 'required',
+                    'sembuh.*' => "required",
+                    'positif.*' => "required",
+                    'meninggal.*' => "required",
+                    'dirawat.*' => "required",
         ], $messages
         );
-        $tracking = new tracking();
-        $tracking->id_rw = $request->id_rw;
-        $tracking->sembuh = $request->sembuh;
-        $tracking->positif = $request->positif;
-        $tracking->meninggal = $request->meninggal;
-        $tracking->dirawat = $request->dirawat;
-        $tracking->tanggal = date('Y-m-d');
-        $tracking->save();
+        $data = [];
+        for ($i=0; $i < $request->num ; $i++) { 
+            $data[] =
+            [
+            'id_rw' => $request->id_rw[$i],
+            'sembuh' => $request->sembuh[$i],
+            'positif' => $request->positif[$i],
+            'meninggal' => $request->meninggal[$i],
+            'dirawat' => $request->dirawat[$i],
+            'tanggal' => date('Y-m-d')
+            ];
+        }
+        tracking::insert($data);
+        
         return redirect()->route('tracking.index')->with(['message' => 'Berhasil']);
 
     }
@@ -67,6 +74,7 @@ class TrackingController extends Controller
      */
     public function show($id)
     {
+        
         $tracking = tracking::findorFail($id);
         return view('admin.tracking.show',compact('tracking'));
     }
@@ -123,5 +131,29 @@ class TrackingController extends Controller
     {
         $tracking = tracking::findorfail($id)->delete();
         return redirect()->route('tracking.index')->with(['message1' => 'Data Berhasil Dihapus']);
+    }
+
+    public function Cetak_pdf()
+    {
+        $tracking = DB::table('trackings')
+                    ->select('rws.kode_rw',
+                            'rws.nama_rw',
+                            'kelurahans.nama_kel',
+                            'kecamatans.nama_kec',
+                            'kotas.nama_kota',
+                            'provinsis.nama_prov',
+                            DB::raw('trackings.id as id'),
+                            DB::raw('SUM(trackings.positif) as positif'),
+                            DB::raw('SUM(trackings.sembuh) as sembuh'),
+                            DB::raw('SUM(trackings.meninggal) as meninggal'),
+                            DB::raw('SUM(trackings.dirawat) as dirawat'))
+                    ->join('rws' ,'trackings.id_rw', '=', 'rws.id')
+                    ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
+                    ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
+                    ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
+                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
+                    ->groupby('rws.kode_rw')
+                    ->get();
+        return view('admin.tracking.index',compact('tracking'));
     }
 }

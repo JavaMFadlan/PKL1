@@ -13,39 +13,49 @@
                                     <div class="card-body">
                                         <form action="{{route('tracking.store')}}" method="post">
                                             @csrf
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        @livewire('kasus')
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class=" mr-auto">
-                                                        <div class="form-group">
-                                                            <label for="">positif</label>
-                                                            <input type="number" max="9999" name="positif" class="form-control" required id="">
+                                            @for($i = 0; $i < $num; $i++)
+                                            <input type="hidden" name="num" value="{{$num}}">
+                                            <h5>Data Ke-{{$i+1}}</h5>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                @livewire('kasus')
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class=" mr-auto">
-                                                        <div class="form-group">
-                                                            <label for="">sembuh</label>
-                                                            <input type="number" max="9999" name="sembuh" class="form-control" required id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class=" mr-auto">
-                                                        <div class="form-group">
-                                                            <label for="">meninggal</label>
-                                                            <input type="number" max="9999" name="meninggal" class="form-control" required id="">
-                                                        </div>
-                                                    </div>
-                                                    <div class=" mr-auto">
-                                                        <div class="form-group">
-                                                            <label for="">dirawat</label>
-                                                            <input type="number" max="9999" name="dirawat" class="form-control" required id="">
+                                                        <div class="col">
+                                                            <div class=" mr-auto">
+                                                                <div class="form-group">
+                                                                    <label for="">positif</label>
+                                                                    <input type="number" min=0 name="positif[]" class="form-control" required id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class=" mr-auto">
+                                                                <div class="form-group">
+                                                                    <label for="">sembuh</label>
+                                                                    <input type="number" min=0 name="sembuh[]" class="form-control" required id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class=" mr-auto">
+                                                                <div class="form-group">
+                                                                    <label for="">meninggal</label>
+                                                                    <input type="number" min=0 name="meninggal[]" class="form-control" required id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class=" mr-auto">
+                                                                <div class="form-group">
+                                                                    <label for="">dirawat</label>
+                                                                    <input type="number" min=0 name="dirawat[]" class="form-control" required id="">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                            <hr>
+                                            @endfor
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary" id="">Simpan</button>
                                             </div>
