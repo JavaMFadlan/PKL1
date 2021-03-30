@@ -12,11 +12,11 @@ class ProvinsiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $success = 200;
     public function index()
     {
         $provinsi = provinsi::all();
         return view('admin.provinsi.index',compact('provinsi'));
+        
     }
 
     /**
@@ -116,9 +116,5 @@ class ProvinsiController extends Controller
         return redirect()->route('provinsi.index')->with(['message1' => 'Data Berhasil Dihapus']);
     }
 
-    public function Apiprov()
-    {
-        // $provinsi = provinsi::all();
-        // return response()->json(['status' => 200 , 'data' => $provinsi], $this->success);
-    }
+    
 }

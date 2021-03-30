@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy; 2021 &mdash; Covid46
 					</div>
 				</div>
 			</div>

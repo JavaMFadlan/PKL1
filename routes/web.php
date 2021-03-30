@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,6 @@ Route::get('/','HomeController@index1');
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/charts', 'HomeController@charts')->name('charts');
-Route::get('/tables', 'HomeController@tables')->name('tables');
 
 Route::resource('provinsi', 'ProvinsiController')->middleware('auth');
 Route::resource('kota', 'KotaController')->middleware('auth');
@@ -29,3 +28,9 @@ Route::resource('kecamatan', 'KecamatanController')->middleware('auth');
 Route::resource('kelurahan', 'KelurahanController')->middleware('auth');
 Route::resource('rw', 'RwController')->middleware('auth');
 Route::resource('tracking', 'TrackingController')->middleware('auth');
+
+
+Route::get('pdfprov', 'PdfController@provinsi')->name('pdfprov')->middleware('auth');
+Route::get('pdfkota', 'PdfController@kota')->name('pdfkota')->middleware('auth');
+
+

@@ -112,7 +112,7 @@ class TrackingController extends Controller
         ], $messages
         );
         $tracking = tracking::findorFail($id);
-        $tracking->id_rw = $request->id_rw;
+        $tracking->id_rw = $request->id_rw[0];
         $tracking->sembuh = $request->sembuh;
         $tracking->positif = $request->positif;
         $tracking->meninggal = $request->meninggal;
