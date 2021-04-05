@@ -11,7 +11,7 @@
         <div class="container-fluid">
                 <div class="col">
                     <div class="row">
-                        <h1>Data Kota</h1>
+                        <h1>Data KTracking</h1>
                     </div>
                     <div class="row">
                         <h4>pada tanggal - sampai - </h4>
@@ -24,19 +24,31 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Kode kota</th>
-                                        <th>Nama kota</th>
+                                        <th>Alamat</th>
+                                        <th>Positif <i class="fas fa-frown"></i></th>
+                                        <th>Sembuh <i class="fas fa-smile-beam"></i></th>
+                                        <th>Meninggal <i class="fas fa-dizzy"></i></th>
+                                        <th>dirawat <i class="fas fa-hospital"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $i = 1;
                                     @endphp
-                                    @foreach ($kota as $data)
+                                    @foreach ($tracking as $data)
                                     <tr>
-                                        <td>{{$i++}}</td>
-                                        <td>{{$data->kode_kota}}</td>
-                                        <td>{{$data->nama_kota}}</td>
+                                                <td>{{$i++}}</td>
+                                                <td>
+                                                provinsi : {{$data->rw->kelurahan->kecamatan->kota->provinsi->nama_prov}}</br>
+                                                kota : {{$data->rw->kelurahan->kecamatan->kota->nama_kota}}</br>
+                                                kecamatan : {{$data->rw->kelurahan->kecamatan->nama_kec}}</br>
+                                                kelurahan :{{$data->rw->kelurahan->nama_kel}}</br>
+                                                Rw : {{$data->rw->nama_rw}}</br>
+                                                </td>
+                                                <td>{{$data->positif}}</td>
+                                                <td>{{$data->sembuh}}</td>
+                                                <td>{{$data->meninggal}}</td>
+                                                <td>{{$data->dirawat}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

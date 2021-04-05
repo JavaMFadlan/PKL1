@@ -30,7 +30,9 @@ Route::resource('rw', 'RwController')->middleware('auth');
 Route::resource('tracking', 'TrackingController')->middleware('auth');
 
 
+Route::get('pdfindex', 'PdfController@indexpdf')->name('pdfindex')->middleware('auth');
+Route::post('pdfindex', 'PdfController@postpdf')->name('pdfindex')->middleware('auth');
+Route::post('pdflaporan', 'PdfController@laporan')->name('pdflaporan')->middleware('auth');
+
 Route::get('pdfprov', 'PdfController@provinsi')->name('pdfprov')->middleware('auth');
-Route::get('pdfkota', 'PdfController@kota')->name('pdfkota')->middleware('auth');
-
-
+Route::get('pdftracking', 'PdfController@tracking')->name('pdftracking')->middleware('auth');

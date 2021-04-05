@@ -28,7 +28,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary" id="">Simpan</button>
+                                                <button type="submit" class="btn btn-primary" >Simpan</button>
                                             </div>
                                         </form>
                                     </div>
