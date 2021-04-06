@@ -173,26 +173,50 @@ class PdfController extends Controller
                         'tgl' => $o['created_at']];
             }
         }
-        $select = array($request->tabel, $awal, $akhir);
+        $select = array($request->tabel, $request->awal, $request->akhir);
         $pdf = PDF::loadview('admin.laporan.laporan_pdf',compact('raw', 'select'));
     	return $pdf->download($request->tabel.'-laporan.pdf');
     }
-    public function kecamatan()
+    
+
+    public function Pdftracking()
     {
-        $kecamatan = kecamatan::all();
-        $pdf = PDF::loadview('admin.laporan.kecamatan_pdf',compact('kecamatan'));
-    	return $pdf->download('Laporan-kecamatan.pdf');
+        $select = array('Default','Default');
+        return view('admin.laporan.tracking_pdf', compact('select'));
     }
-    public function tracking()
+    public function Postpdftracking(Request $request)
     {
-        $tracking = tracking::with('rw')->get();
-        $pdf = PDF::loadview('admin.laporan.tracking_pdf',compact('tracking'));
-    	return $pdf->stream();
+        $awal = Carbon::parse($request->awal)->format('Y-m-d');
+        $akhir = Carbon::parse($request->akhir)->addDays(1)->format('Y-m-d');
+
+        if (is_null($request->awal) && is_null($request->akhir)) {
+            $tracking = tracking::with('rw')->get();
+        }
+        else{
+            $tracking = tracking::with('rw')->whereBetween('tanggal', [$awal, $akhir])->get();
+        }
+        $select = array($request->awal, $request->akhir);
+        if ($awal > $akhir) {
+            return redirect()->back()->with(['error' => 'Tanggal yang dimasukkan tidak valid']);
+        }
+        else {
+            return view('admin.laporan.tracking_pdf', compact('tracking', 'select'));
+        }
     }
-    public function provinsi()
+
+    public function Postlaporantracking(Request $request)
     {
-        $provinsi = provinsi::all();
-        $pdf = PDF::loadview('admin.laporan.provinsi_pdf',compact('provinsi'));
-    	return $pdf->download('Laporan-provinsi.pdf');
+        $awal = Carbon::parse($request->awal)->format('Y-m-d');
+        $akhir = Carbon::parse($request->akhir)->addDays(1)->format('Y-m-d');
+
+        if (is_null($request->awal) && is_null($request->akhir)) {
+            $tracking = tracking::with('rw')->get();
+        }
+        else{
+            $tracking = tracking::with('rw')->whereBetween('tanggal', [$awal, $akhir])->get();
+        }
+        $select = array($request->awal, $request->akhir);
+        $pdf = PDF::loadview('admin.laporan.laporan_tracking_pdf',compact('tracking', 'select'));
+    	return $pdf->download('tracking-laporan.pdf');
     }
 }

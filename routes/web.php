@@ -34,5 +34,7 @@ Route::get('pdfindex', 'PdfController@indexpdf')->name('pdfindex')->middleware('
 Route::post('pdfindex', 'PdfController@postpdf')->name('pdfindex')->middleware('auth');
 Route::post('pdflaporan', 'PdfController@laporan')->name('pdflaporan')->middleware('auth');
 
-Route::get('pdfprov', 'PdfController@provinsi')->name('pdfprov')->middleware('auth');
-Route::get('pdftracking', 'PdfController@tracking')->name('pdftracking')->middleware('auth');
+Route::get('pdftracking', 'PdfController@Pdftracking')->name('pdftracking')->middleware('auth');
+Route::post('pdftracking', 'PdfController@Postpdftracking')->name('pdftracking')->middleware('auth');
+Route::post('pdflaporan', 'PdfController@Postlaporantracking')->name('pdflaporan')->middleware('auth');
+

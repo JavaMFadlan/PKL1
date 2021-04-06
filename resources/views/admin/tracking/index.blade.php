@@ -29,10 +29,6 @@
                                 <i class="fas fa-plus"></i>
                                     Menambah Data
                             </button>
-                                <a href="{{ route('pdftracking')}}" class="float-left btn btn-success">
-                                <i class="fas fa-file-pdf"></i> Cetak PDF
-                                </a>
-                                
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

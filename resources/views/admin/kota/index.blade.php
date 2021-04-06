@@ -28,9 +28,6 @@
                                 <a href="{{ route('kota.create')}}" class="float-right btn btn-primary">
                                 <i class="fas fa-plus"></i>
                                 </a>
-                                <a href="{{ route('pdfkota')}}" class="float-left btn btn-success">
-                                <i class="fas fa-file-pdf"></i> Cetak PDF
-                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

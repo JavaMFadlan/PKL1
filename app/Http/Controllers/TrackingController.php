@@ -49,7 +49,19 @@ class TrackingController extends Controller
         ], $messages
         );
         $data = [];
-        for ($i=0; $i < $request->num ; $i++) { 
+        $error = [];
+        for ($i=0; $i < $request->num ; $i++) {
+            if ($request->meninggal[$i] > $request->positif[$i] ) {
+                return redirect()->back()->with(['error' => 'Jumlah Meninggal Pada Data ke-'.$i.' Melebihi Positif']);
+            }
+            elseif ($request->positif[$i] < $request->dirawat[$i]) {
+                return redirect()->back()->with(['error' => 'Jumlah Dirawat Pada Data ke-'.$i.' Melebihi Positif']);
+
+            }
+            else if ($request->positif[$i] < $request->sembuh[$i]) {
+                return redirect()->back()->with(['error' => 'Jumlah sembuh Pada Data ke-'.$i.' Melebihi Positif']);
+
+            }
             $data[] =
             [
             'id_rw' => $request->id_rw[$i],
@@ -131,29 +143,5 @@ class TrackingController extends Controller
     {
         $tracking = tracking::findorfail($id)->delete();
         return redirect()->route('tracking.index')->with(['message1' => 'Data Berhasil Dihapus']);
-    }
-
-    public function Cetak_pdf()
-    {
-        $tracking = DB::table('trackings')
-                    ->select('rws.kode_rw',
-                            'rws.nama_rw',
-                            'kelurahans.nama_kel',
-                            'kecamatans.nama_kec',
-                            'kotas.nama_kota',
-                            'provinsis.nama_prov',
-                            DB::raw('trackings.id as id'),
-                            DB::raw('SUM(trackings.positif) as positif'),
-                            DB::raw('SUM(trackings.sembuh) as sembuh'),
-                            DB::raw('SUM(trackings.meninggal) as meninggal'),
-                            DB::raw('SUM(trackings.dirawat) as dirawat'))
-                    ->join('rws' ,'trackings.id_rw', '=', 'rws.id')
-                    ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
-                    ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
-                    ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
-                    ->groupby('rws.kode_rw')
-                    ->get();
-        return view('admin.tracking.index',compact('tracking'));
     }
 }

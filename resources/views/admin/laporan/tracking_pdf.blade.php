@@ -1,62 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>
-        <div class="container-fluid">
-                <div class="col">
-                    <div class="row">
-                        <h1>Data KTracking</h1>
-                    </div>
-                    <div class="row">
-                        <h4>pada tanggal - sampai - </h4>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Alamat</th>
-                                        <th>Positif <i class="fas fa-frown"></i></th>
-                                        <th>Sembuh <i class="fas fa-smile-beam"></i></th>
-                                        <th>Meninggal <i class="fas fa-dizzy"></i></th>
-                                        <th>dirawat <i class="fas fa-hospital"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $i = 1;
-                                    @endphp
-                                    @foreach ($tracking as $data)
-                                    <tr>
+@extends('layouts.master')
+@section('content')
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <div class="card mb-4">
+                        @if (session('error'))
+                                <div class="alert alert-dismissible fade show alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    {{session('error')}}
+                                </div>
+                            @endif
+                            <div class="card-header">
+                                <h4>Laporan</h4>
+                                <form action="{{ url('pdftracking')}}" method="post">
+                                @csrf
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group row">
+                                                <label class="col-sm-5 col-form-label">Tanggal awal</label>
+                                                <div class="col-sm-6">
+                                                    <input type="date" name="awal" class="form-control">
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class= "col-md-5">
+                                            <div class="form-group row">
+                                                <label class="col-sm-5 col-form-label">Tanggal Akhir</label>
+                                                <div class="col-sm-6">
+                                                    <input type="date" name="akhir" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-search"></i> Cari
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        
+                                </form>
+                                @if($select[0] != "Default")
+                                    <form action="{{ route('pdflaporan')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="awal" value="{{$select[0]}}">
+                                    <input type="hidden" name="akhir" value="{{$select[1]}}">
+                                        <div class="col">
+                                            <button type="submit" class="float-left btn btn-danger">
+                                            <i class="fas fa-file-pdf"></i> Cetak PDF
+                                            </button>
+                                        </div>
+                                    </form>
+                                    @endisset
+                                </div>
+                            </div>
+                            <div class="card-body">
+                            @if($select[1] != "Default" && $select[1] != NULL) 
+                            <h5 class="text-center">Tanggal {{$select[0]}} sampai {{$select[1]}}</h5> 
+                            @endif
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Alamat</th>
+                                                <th>Positif</th>
+                                                <th>Meninggal</th>
+                                                <th>Dirawat</th>
+                                                <th>Sembuh</th>
+                                                <th>Tanggal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @isset($tracking)
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @foreach ($tracking as $data1)
+                                            <tr>
                                                 <td>{{$i++}}</td>
                                                 <td>
-                                                provinsi : {{$data->rw->kelurahan->kecamatan->kota->provinsi->nama_prov}}</br>
-                                                kota : {{$data->rw->kelurahan->kecamatan->kota->nama_kota}}</br>
-                                                kecamatan : {{$data->rw->kelurahan->kecamatan->nama_kec}}</br>
-                                                kelurahan :{{$data->rw->kelurahan->nama_kel}}</br>
-                                                Rw : {{$data->rw->nama_rw}}</br>
+                                                    <ul class="list-unstyled">
+                                                        <li>provinsi : {{$data1->rw->kelurahan->kecamatan->kota->provinsi->nama_prov}}</br></li>
+                                                        <li>kota : {{$data1->rw->kelurahan->kecamatan->kota->nama_kota}}</br></li>
+                                                        <li>kecamatan : {{$data1->rw->kelurahan->kecamatan->nama_kec}}</br></li>
+                                                        <li>kelurahan :{{$data1->rw->kelurahan->nama_kel}}</br></li>
+                                                        <li>Rw : {{$data1->rw->nama_rw}}</br></li>
+                                                    </ul>
                                                 </td>
-                                                <td>{{$data->positif}}</td>
-                                                <td>{{$data->sembuh}}</td>
-                                                <td>{{$data->meninggal}}</td>
-                                                <td>{{$data->dirawat}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                <td>{{$data1->positif}}</td>
+                                                <td>{{$data1->meninggal}}</td>
+                                                <td>{{$data1->dirawat}}</td>
+                                                <td>{{$data1->sembuh}}</td>
+                                                <td>{{$data1->tanggal}}</td>
+                                            </tr>
+                                            @endforeach
+                                        @endisset
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
-</body>
-</html>
-                    
+        </div>
+@endsection

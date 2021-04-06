@@ -31,9 +31,6 @@
                                 <a href="{{ route('provinsi.create')}}" class="float-right btn btn-primary">
                                 <i class="fas fa-plus"></i>
                                 </a>
-                                <a href="{{ route('pdfprov')}}" class="float-left btn btn-success">
-                                <i class="fas fa-file-pdf"></i> Cetak PDF
-                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

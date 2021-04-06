@@ -4,6 +4,12 @@
                 <main>
                     <div class="container-fluid">
                     <div class="mt-4"></div>
+                    @if (session('error'))
+                        <div class="alert alert-dismissible fade show alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{session('error')}}
+                        </div>
+                    @endif
                         <div class="row">
                             <div class="col">
                                 <div class="card">
