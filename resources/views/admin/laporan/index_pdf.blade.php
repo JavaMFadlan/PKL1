@@ -56,7 +56,7 @@
                                     <div class="row">
                                         
                                 </form>
-                                @if($select[0] != "Default")
+                                @if($select[0] != "Default" && $raw != NULL)
                                     <form action="{{ route('pdflaporan')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="tabel" value="{{$select[0]}}">

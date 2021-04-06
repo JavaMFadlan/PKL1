@@ -33,7 +33,7 @@ class APIController extends Controller
                     ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                     ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    ->rightjoin('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
+                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
                     ->groupby('provinsis.id')
                     ->get();
 

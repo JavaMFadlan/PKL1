@@ -42,9 +42,9 @@
                                     <div class="row">
                                         
                                 </form>
-                                @if($select[0] != "Default")
                                     <form action="{{ route('pdflaporan')}}" method="post">
                                     @csrf
+                                    @if($select[0] != "Default" && $select[0] != NULL)
                                     <input type="hidden" name="awal" value="{{$select[0]}}">
                                     <input type="hidden" name="akhir" value="{{$select[1]}}">
                                         <div class="col">
@@ -53,7 +53,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                    @endisset
+                                    @endif
                                 </div>
                             </div>
                             <div class="card-body">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use App\provinsi;
 use App\tracking;
 
 class HomeController extends Controller
@@ -51,7 +52,7 @@ class HomeController extends Controller
                     ->join('kelurahans' ,'rws.id_kel', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kec', '=', 'kecamatans.id')
                     ->join('kotas' ,'kecamatans.id_kota', '=', 'kotas.id')
-                    ->rightjoin('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
+                    ->join('provinsis' ,'kotas.id_prov', '=', 'provinsis.id')
                     ->select(
                         DB::raw('provinsis.id'),
                         DB::raw('provinsis.nama_prov as nama_prov'),
@@ -63,7 +64,8 @@ class HomeController extends Controller
                     ->groupby('provinsis.id', 'provinsis.nama_prov')
                     ->get();
         
-        return view('admin.index', compact('data','tracking'));
+        $provinsi = provinsi::get()->count();
+        return view('admin.index', compact('data','tracking', 'provinsi'));
     }
     public function index1()
     {

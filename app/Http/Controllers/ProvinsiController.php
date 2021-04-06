@@ -14,7 +14,7 @@ class ProvinsiController extends Controller
      */
     public function index()
     {
-        $provinsi = provinsi::all();
+        $provinsi = provinsi::get();
         return view('admin.provinsi.index',compact('provinsi'));
         
     }
