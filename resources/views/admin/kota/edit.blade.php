@@ -16,7 +16,7 @@
                                 <div class="col-md-5 mr-auto">
                                     <div class="form-group">
                                         <label for="">kode kota</label>
-                                        <input type="number" name="kode" class="form-control" value="{{$kota->kode_kota}}" max="9999" required id="">
+                                        <input type="number" name="kode" class="form-control" value="{{$kota->kode_kota}}" min="0" required id="">
                                     </div>
                                 </div>
                                 <div class="col-md-5">

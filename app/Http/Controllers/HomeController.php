@@ -23,28 +23,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        if($response == NULL){
-            $data[] = [
-                'nama_negara' => 0, 
-                'kasus' =>0,
-                'aktif' =>0,
-                'sembuh' =>0,
-                'meninggal' =>0
-            ];
-        }
-        else{
-        foreach ($response as $key) {
-                $data[] = [
-                        'nama_negara' => $key['attributes']['Country_Region'], 
-                        'kasus' =>$key['attributes']['Confirmed'],
-                        'aktif' =>$key['attributes']['Active'],
-                        'sembuh' =>$key['attributes']['Recovered'],
-                        'meninggal' =>$key['attributes']['Deaths']
-                    ];
-            }
-        }
+        // $data = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // if($response == NULL){
+        //     $data[] = [
+        //         'nama_negara' => 0, 
+        //         'kasus' =>0,
+        //         'aktif' =>0,
+        //         'sembuh' =>0,
+        //         'meninggal' =>0
+        //     ];
+        // }
+        // else{
+        // foreach ($response as $key) {
+        //         $data[] = [
+        //                 'nama_negara' => $key['attributes']['Country_Region'], 
+        //                 'kasus' =>$key['attributes']['Confirmed'],
+        //                 'aktif' =>$key['attributes']['Active'],
+        //                 'sembuh' =>$key['attributes']['Recovered'],
+        //                 'meninggal' =>$key['attributes']['Deaths']
+        //             ];
+        //     }
+        // }
 
         $tracking = DB::table('trackings')
                     
@@ -65,33 +65,33 @@ class HomeController extends Controller
                     ->get();
         
         $provinsi = provinsi::get()->count();
-        return view('admin.index', compact('data','tracking', 'provinsi'));
+        return view('admin.index', compact('tracking', 'provinsi'));
     }
     public function index1()
     {
         //Global
-        $data = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        if($response == NULL){
-            $data[] = [
-                'nama_negara' => 0, 
-                'kasus' =>0,
-                'aktif' =>0,
-                'sembuh' =>0,
-                'meninggal' =>0
-            ];
-        }
-        else{
-        foreach ($response as $key) {
-                $data[] = [
-                        'nama_negara' => $key['attributes']['Country_Region'], 
-                        'kasus' =>$key['attributes']['Confirmed'],
-                        'aktif' =>$key['attributes']['Active'],
-                        'sembuh' =>$key['attributes']['Recovered'],
-                        'meninggal' =>$key['attributes']['Deaths']
-                    ];
-            }
-        }
+        // $data = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // if($response == NULL){
+        //     $data[] = [
+        //         'nama_negara' => 0, 
+        //         'kasus' =>0,
+        //         'aktif' =>0,
+        //         'sembuh' =>0,
+        //         'meninggal' =>0
+        //     ];
+        // }
+        // else{
+        // foreach ($response as $key) {
+        //         $data[] = [
+        //                 'nama_negara' => $key['attributes']['Country_Region'], 
+        //                 'kasus' =>$key['attributes']['Confirmed'],
+        //                 'aktif' =>$key['attributes']['Active'],
+        //                 'sembuh' =>$key['attributes']['Recovered'],
+        //                 'meninggal' =>$key['attributes']['Deaths']
+        //             ];
+        //     }
+        // }
         
 
 
@@ -113,7 +113,7 @@ class HomeController extends Controller
                         ->groupby('kode_prov','nama_prov')
                         ->get();
 
-        return view('index', compact('data', 'tracking'));
+        return view('index', compact( 'tracking'));
     }
     
     public function charts()

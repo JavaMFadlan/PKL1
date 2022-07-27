@@ -36,5 +36,5 @@ Route::post('pdflaporan', 'PdfController@laporan')->name('pdflaporan')->middlewa
 
 Route::get('pdftracking', 'PdfController@Pdftracking')->name('pdftracking')->middleware('auth');
 Route::post('pdftracking', 'PdfController@Postpdftracking')->name('pdftracking')->middleware('auth');
-Route::post('pdflaporan', 'PdfController@Postlaporantracking')->name('pdflaporan')->middleware('auth');
+Route::post('pdflaporantracking', 'PdfController@Postlaporantracking')->name('pdflaporantracking')->middleware('auth');
 

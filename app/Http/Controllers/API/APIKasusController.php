@@ -89,120 +89,120 @@ class APIKasusController extends Controller
     }
     public function dunia()
     {
-        $f = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
-            $f[] = ['nama_negara' => $key['attributes']['Country_Region'], 
-                    'kasus' =>$key['attributes']['Confirmed'],
-                    'aktif' =>$key['attributes']['Active'],
-                    'sembuh' =>$key['attributes']['Recovered'],
-                    'Meninggal' =>$key['attributes']['Deaths']
-                ];
-        }
-        $arr = [
-            'status' => 200,
-            'data' => 
-            $f,
-            'message' => 'Berhasil'
-        ];
-        return response()->json($arr, 200);
+        // $f = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // foreach ($response as $key) {
+        //     $f[] = ['nama_negara' => $key['attributes']['Country_Region'], 
+        //             'kasus' =>$key['attributes']['Confirmed'],
+        //             'aktif' =>$key['attributes']['Active'],
+        //             'sembuh' =>$key['attributes']['Recovered'],
+        //             'Meninggal' =>$key['attributes']['Deaths']
+        //         ];
+        // }
+        // $arr = [
+        //     'status' => 200,
+        //     'data' => 
+        //     $f,
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($arr, 200);
         
     }
     public function positifglobal()
     {
-        $f = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
-            $f[] = [
-                    'aktif' =>$key['attributes']['Active'],
-                ];
-        }
-        $d = 0;
-        foreach ($f as $bb) {
-            $d += $bb['aktif'];
-        }
-        $positif = ['total' => $d];
-        $arr = [
-            'status' => 200,
-            'data' => [ 
-                $positif
-            ],
-            'message' => 'Berhasil'
-        ];
-        return response()->json($arr, 200);
+        // $f = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // foreach ($response as $key) {
+        //     $f[] = [
+        //             'aktif' =>$key['attributes']['Active'],
+        //         ];
+        // }
+        // $d = 0;
+        // foreach ($f as $bb) {
+        //     $d += $bb['aktif'];
+        // }
+        // $positif = ['total' => $d];
+        // $arr = [
+        //     'status' => 200,
+        //     'data' => [ 
+        //         $positif
+        //     ],
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($arr, 200);
         
     }
     public function kasusglobal()
     {
-        $f = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
-            $f[] = [
-                    'kasus' =>$key['attributes']['Confirmed'],
-                ];
-        }
-        $d = 0;
-        foreach ($f as $bb) {
-            $d += $bb['kasus'];
-        }
-        $kasus = ['total' => $d];
-        $arr = [
-            'status' => 200,
-            'data' => [ 
-                $kasus
-            ],
-            'message' => 'Berhasil'
-        ];
-        return response()->json($arr, 200);
+        // $f = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // foreach ($response as $key) {
+        //     $f[] = [
+        //             'kasus' =>$key['attributes']['Confirmed'],
+        //         ];
+        // }
+        // $d = 0;
+        // foreach ($f as $bb) {
+        //     $d += $bb['kasus'];
+        // }
+        // $kasus = ['total' => $d];
+        // $arr = [
+        //     'status' => 200,
+        //     'data' => [ 
+        //         $kasus
+        //     ],
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($arr, 200);
         
     }
     public function meninggalglobal()
     {
-        $f = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
-            $f[] = [
-                    'meninggal' =>$key['attributes']['Deaths'],
-                ];
-        }
-        $d = 0;
-        foreach ($f as $bb) {
-            $d += $bb['meninggal'];
-        }
+        // $f = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // foreach ($response as $key) {
+        //     $f[] = [
+        //             'meninggal' =>$key['attributes']['Deaths'],
+        //         ];
+        // }
+        // $d = 0;
+        // foreach ($f as $bb) {
+        //     $d += $bb['meninggal'];
+        // }
         
-        $meninggal = ['total' => $d];
-        $arr = [
-            'status' => 200,
-            'data' => [ 
-                $meninggal
-            ],
-            'message' => 'Berhasil'
-        ];
-        return response()->json($arr, 200);
+        // $meninggal = ['total' => $d];
+        // $arr = [
+        //     'status' => 200,
+        //     'data' => [ 
+        //         $meninggal
+        //     ],
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($arr, 200);
         
     }
     public function sembuhglobal()
     {
-        $f = [];
-        $response = Http::get('https://api.kawalcorona.com/')->json();
-        foreach ($response as $key) {
-            $f[] = [
-                    'sembuh' =>$key['attributes']['Recovered'],
-                ];
-        }
-        $d = 0;
-        foreach ($f as $bb) {
-            $d += $bb['sembuh'];
-        }
-        $sembuh = ['total' => $d];
-        $arr = [
-            'status' => 200,
-            'data' => [ 
-                $sembuh
-            ],
-            'message' => 'Berhasil'
-        ];
-        return response()->json($arr, 200);
+        // $f = [];
+        // $response = Http::get('https://api.kawalcorona.com/')->json();
+        // foreach ($response as $key) {
+        //     $f[] = [
+        //             'sembuh' =>$key['attributes']['Recovered'],
+        //         ];
+        // }
+        // $d = 0;
+        // foreach ($f as $bb) {
+        //     $d += $bb['sembuh'];
+        // }
+        // $sembuh = ['total' => $d];
+        // $arr = [
+        //     'status' => 200,
+        //     'data' => [ 
+        //         $sembuh
+        //     ],
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($arr, 200);
         
     }
 }

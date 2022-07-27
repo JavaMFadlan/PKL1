@@ -32,7 +32,7 @@
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label for="">Kode kota</label>
-                                                        <input type="number" name="kode" class="form-control" max="9999" required  id="">
+                                                        <input type="number" name="kode" class="form-control" min="0" required  id="">
                                                     </div>
                                                 </div>
                                             </div>

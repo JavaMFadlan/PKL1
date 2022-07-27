@@ -42,7 +42,7 @@
                                     <div class="row">
                                         
                                 </form>
-                                    <form action="{{ route('pdflaporan')}}" method="post">
+                                    <form action="{{ route('pdflaporantracking')}}" method="post">
                                     @csrf
                                     @if($select[0] != "Default" && $select[0] != NULL)
                                     <input type="hidden" name="awal" value="{{$select[0]}}">

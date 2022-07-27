@@ -11,7 +11,7 @@
                             
                         <div class="row mx-auto">
                             <div class="col-xl-6 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Jumlah Provinsi
                                     <div class="float-right">{{$provinsi}}</div>
                                     </div>
@@ -46,40 +46,7 @@
                                     </div>
                                 </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header text-center">
-                                <h3>Global</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Negara</th>
-                                                <th>Kasus</th>
-                                                <th>Aktif</th>
-                                                <th>Sembuh</th>
-                                                <th>Meninggal</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @php $no = 1 @endphp
-                                            @foreach ($data as $item)
-                                            <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$item['nama_negara']}}</td>
-                                                <td>{{$item['kasus']}}</td>
-                                                <td>{{$item['aktif']}}</td>
-                                                <td>{{$item['sembuh']}}</td>
-                                                <td>{{$item['meninggal']}}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="mb-5"></div>
                         <div class="card mb-4">
                             <div class="card-header text-center">
@@ -135,72 +102,6 @@
         </div>
 @endsection
 <script>
-                <?php 
-                $f = 0;
-                $g = 0;
-                $h = 0;
-                $k = 0;
-                foreach ($data as $key) {
-                        $g += $key['aktif'];
-                        $h += $key['meninggal'];
-                        $k += $key['sembuh'];
-                        $f += $key['kasus'];
-                        }
-                $n = 0;
-                $m = 0;
-                $b = 0;
-                if($g != 0){
-                        $n = ($g / $f) * 100;
-                        $m = ($h / $f) * 100;
-                        $b = ($k / $f) * 100;
-                }
-                ?>
-                var kasus = {{$f}};
-                var aktif = {{$n}};
-                var meninggal = {{$m}};
-                var sembuh = {{$b}};
-                window.onload = function() {
-                var chart = new CanvasJS.Chart("Pie", {
-                        animationEnabled: true,
-                        data: [{
-                        responsive: true,
-                        maintainAspectRatio	: false,
-                                type: "pie",
-                                startAngle: 160,
-                                yValueFormatString: "##0.00\"%\"",
-                                indexLabel: "{y} {label}",
-                                dataPoints: [
-                                        {y: {{$n}}, label: "aktif"},
-                                        {y: meninggal, label: "meninggal"},
-                                        {y: sembuh, label: "sembuh"},
-                                ]
-                        }]
-                });
-                var chart1 = new CanvasJS.Chart("Bar", {
-                animationEnabled: true,
-                theme: "light2",
-                        data: [{   
-                        responsive: true,
-                        maintainAspectRatio	: false,     
-                        type: "column",  
-                        dataPoints: [      
-                        <?php 
-                        $nm = 0;
-                                foreach ($data as $bu) {
-                                $nm++;
-                                ?>
-                        { y: {{$bu['kasus']}}, label: "{{$bu['nama_negara']}}" },
-                        <?php 
-                        if ($nm > 5) {
-                                break;
-                                }
-                        }
-                        ?>
-                        ]
-                        }]
-                });
-                chart.render();
-                chart1.render();
-                }
+                
                 
         </script>
